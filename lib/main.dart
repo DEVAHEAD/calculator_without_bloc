@@ -6,7 +6,7 @@ void main() {
 
 class CalculatorApp extends StatelessWidget {
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter basic calculator',
@@ -30,39 +30,40 @@ class _CalculationState extends State<Calculation> {
 
   @override
   Widget build(BuildContext context) {
+    double size = (MediaQuery.of(context).size.width - 60 )/ 4.0;
     return Column(
       children: [
         ResultDisplay(text: '0'),
         Row(
           children: [
-            _getButton(text: '7', onTap: () => numberPressed(7)),
-            _getButton(text: '8', onTap: () => numberPressed(8)),
-            _getButton(text: '9', onTap: () => numberPressed(9)),
-            _getButton(text: 'x', onTap: () => operatorPressed('*'), backgroundColor: Color.fromRGBO(220, 220, 220, 1)),
+            _getButton(text: '7', onTap: () => numberPressed(7), size: size),
+            _getButton(text: '8', onTap: () => numberPressed(8), size: size),
+            _getButton(text: '9', onTap: () => numberPressed(9), size: size),
+            _getButton(text: 'x', onTap: () => operatorPressed('*'), backgroundColor: Color.fromRGBO(220, 220, 220, 1), size: size),
           ],
         ),
         Row(
           children: [
-            _getButton(text: '4', onTap: () => numberPressed(4)),
-            _getButton(text: '5', onTap: () => numberPressed(5)),
-            _getButton(text: '6', onTap: () => numberPressed(6)),
-            _getButton(text: '/', onTap: () => operatorPressed('/'), backgroundColor: Color.fromRGBO(220, 220, 220, 1)),
+            _getButton(text: '4', onTap: () => numberPressed(4), size: size),
+            _getButton(text: '5', onTap: () => numberPressed(5), size: size),
+            _getButton(text: '6', onTap: () => numberPressed(6), size: size),
+            _getButton(text: '/', onTap: () => operatorPressed('/'), backgroundColor: Color.fromRGBO(220, 220, 220, 1), size: size),
           ],
         ),
         Row(
           children: [
-            _getButton(text: '1', onTap: () => numberPressed(1)),
-            _getButton(text: '2', onTap: () => numberPressed(2)),
-            _getButton(text: '3', onTap: () => numberPressed(3)),
-            _getButton(text: '+', onTap: () => operatorPressed('+'), backgroundColor: Color.fromRGBO(220, 220, 220, 1))
+            _getButton(text: '1', onTap: () => numberPressed(1), size: size),
+            _getButton(text: '2', onTap: () => numberPressed(2), size: size),
+            _getButton(text: '3', onTap: () => numberPressed(3), size: size),
+            _getButton(text: '+', onTap: () => operatorPressed('+'), backgroundColor: Color.fromRGBO(220, 220, 220, 1), size: size)
           ],
         ),
         Row(
           children: [
-            _getButton(text: '=', onTap: calculateResult, backgroundColor: Colors.orange, textColor: Colors.white),
-            _getButton(text: '0', onTap: () => numberPressed(0)),
-            _getButton(text: 'C', onTap: clear, backgroundColor: Color.fromRGBO(220, 220, 220, 1)),
-            _getButton(text: '-', onTap: () => operatorPressed('-'),backgroundColor: Color.fromRGBO(220, 220, 220, 1)),
+            _getButton(text: '=', onTap: calculateResult, backgroundColor: Colors.orange, textColor: Colors.white, size: size),
+            _getButton(text: '0', onTap: () => numberPressed(0),size: size),
+            _getButton(text: 'C', onTap: clear, backgroundColor: Color.fromRGBO(220, 220, 220, 1),size: size),
+            _getButton(text: '-', onTap: () => operatorPressed('-'),backgroundColor: Color.fromRGBO(220, 220, 220, 1),size: size),
           ],
         ),
       ]
@@ -160,11 +161,11 @@ class CalculatorButton extends StatelessWidget {
 }
 
 
-Widget _getButton({required String text, required VoidCallback onTap, Color backgroundColor = Colors.white, Color textColor = Colors.black}) { //HY [240113] added required
+Widget _getButton({required String text, required VoidCallback onTap, required double size, Color backgroundColor = Colors.white, Color textColor = Colors.black}) { //HY [240113] added required
   return CalculatorButton(
     label: text,
     onTap: onTap,
-    size: 90,
+    size: size,
     backgroundColor: backgroundColor,
     labelColor: textColor,
   );
