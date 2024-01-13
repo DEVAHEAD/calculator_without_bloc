@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; //imported for SystemChrome
+import 'package:calculator_without_bloc/main.dart';
 
 void main() {
   runApp(CalculatorApp());
@@ -31,7 +31,16 @@ class _CalculationState extends State<Calculation> {
 
   @override
   Widget build(BuildContext context) {
-    return ResultDisplay(text: '0');
+    return Column(
+      children: [
+        ResultDisplay(text: '0'),
+        Row(
+          children: [
+            // Here we want to place the buttons of the first Row
+          ],
+        )
+      ]
+    );
   }
 }
 
