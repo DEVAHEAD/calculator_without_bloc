@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; //HY[240113]added for SystemChrome
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(CalculatorApp());
@@ -18,9 +18,9 @@ class _CalculatorAppState extends State<CalculatorApp> {
         statusBarColor: Colors.transparent,
       )
     );
+
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
