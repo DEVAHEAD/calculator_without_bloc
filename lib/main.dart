@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:calculator_without_bloc/main.dart';
+import 'package:flutter/services.dart'; //HY[240113]added for SystemChrome
 
 void main() {
   runApp(CalculatorApp());
 }
 
-class CalculatorApp extends StatelessWidget {
+class CalculatorApp extends StatefulWidget {
+  @override
+  _CalculatorAppState createState() => _CalculatorAppState();
+}
+
+class _CalculatorAppState extends State<CalculatorApp> {
+  @override
+  void initState() {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+      )
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(    
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter basic calculator',
       home: Scaffold(
