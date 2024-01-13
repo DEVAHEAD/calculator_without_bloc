@@ -35,19 +35,46 @@ class _CalculationState extends State<Calculation> {
         ResultDisplay(text: '0'),
         Row(
           children: [
-            CalculatorButton(
-              label: '7',
-              onTap: () => {},
-              size: 90,
-              backgroundColor: Colors.white,
-              labelColor: Colors.black,
-            )// Here we want to place the buttons of the first Row
+            _getButton(text: '7', onTap: () => numberPressed(7)),
+            _getButton(text: '8', onTap: () => numberPressed(8)),
+            _getButton(text: '9', onTap: () => numberPressed(9)),
+            _getButton(text: 'x', onTap: () => operatorPressed('*'), backgroundColor: Color.fromRGBO(220, 220, 220, 1)),
           ],
-        )
+        ),
+        Row(
+          children: [
+            _getButton(text: '4', onTap: () => numberPressed(4)),
+            _getButton(text: '5', onTap: () => numberPressed(5)),
+            _getButton(text: '6', onTap: () => numberPressed(6)),
+            _getButton(text: '/', onTap: () => operatorPressed('/'), backgroundColor: Color.fromRGBO(220, 220, 220, 1)),
+          ],
+        ),
+        Row(
+          children: [
+            _getButton(text: '1', onTap: () => numberPressed(1)),
+            _getButton(text: '2', onTap: () => numberPressed(2)),
+            _getButton(text: '3', onTap: () => numberPressed(3)),
+            _getButton(text: '+', onTap: () => operatorPressed('+'), backgroundColor: Color.fromRGBO(220, 220, 220, 1))
+          ],
+        ),
+        Row(
+          children: [
+            _getButton(text: '=', onTap: calculateResult, backgroundColor: Colors.orange, textColor: Colors.white),
+            _getButton(text: '0', onTap: () => numberPressed(0)),
+            _getButton(text: 'C', onTap: clear, backgroundColor: Color.fromRGBO(220, 220, 220, 1)),
+            _getButton(text: '-', onTap: () => operatorPressed('-'),backgroundColor: Color.fromRGBO(220, 220, 220, 1)),
+          ],
+        ),
       ]
     );
   }
 }
+
+operatorPressed(String operator) {}
+numberPressed(int number) {}
+calculateResult() {}
+clear() {}
+
 
 
 class ResultDisplay extends StatelessWidget {
@@ -89,8 +116,8 @@ class CalculatorButton extends StatelessWidget {
     this.labelColor = Colors.black
   });
 
-  final String label;
-  final VoidCallback onTap;
+  final String label; 
+  final VoidCallback onTap; 
   final double size;
   final Color? backgroundColor;
   final Color? labelColor;
@@ -130,4 +157,15 @@ class CalculatorButton extends StatelessWidget {
       )
     );
   }
+}
+
+
+Widget _getButton({required String text, required VoidCallback onTap, Color backgroundColor = Colors.white, Color textColor = Colors.black}) { //HY [240113] added required
+  return CalculatorButton(
+    label: text,
+    onTap: onTap,
+    size: 90,
+    backgroundColor: backgroundColor,
+    labelColor: textColor,
+  );
 }
