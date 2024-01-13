@@ -1,37 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; //HY[240113]added for SystemChrome
 
 void main() {
   runApp(CalculatorApp());
 }
 
-class CalculatorApp extends StatefulWidget {
-  @override
-  _CalculatorAppState createState() => _CalculatorAppState();
-}
+class CalculatorApp extends StatelessWidget {
 
-class _CalculatorAppState extends State<CalculatorApp> {
-  @override
-  void initState() {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-      )
-    );
-    super.initState();
-  }
-
-  @override
+    @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Flutter basic calculator',
       home: Scaffold(
-        body: Calculation()
+        body: SafeArea(
+          child: Calculation()
+        )
       ),
     );
   }
 }
+
 
 class Calculation extends StatefulWidget {
   @override
@@ -43,7 +30,16 @@ class _CalculationState extends State<Calculation> {
 
   @override
   Widget build(BuildContext context) {
-    return ResultDisplay(text: '0');
+    return Column(
+      children: [
+        ResultDisplay(text: '0'),
+        Row(
+          children: [
+            // Here we want to place the buttons of the first Row
+          ],
+        )
+      ]
+    );
   }
 }
 
@@ -64,7 +60,7 @@ class ResultDisplay extends StatelessWidget {
       color: Colors.black,
       child: Container(        
         alignment: Alignment.centerRight,
-        padding: EdgeInsets.only(right: 24),
+        padding: EdgeInsets.only(right: 24, bottom: 24),
         child: Text(
           text,
           style: TextStyle(
