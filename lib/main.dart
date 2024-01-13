@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:calculator_without_bloc/main.dart';
+import 'package:flutter/services.dart'; //imported for SystemChrome
 
 void main() {
   runApp(CalculatorApp());
 }
 
 class CalculatorApp extends StatelessWidget {
-  @override
+
+    @override
   Widget build(BuildContext context) {
-    return MaterialApp(    
-      debugShowCheckedModeBanner: false,
+    return MaterialApp(
       title: 'Flutter basic calculator',
       home: Scaffold(
-        body: Calculation()
+        body: SafeArea(
+          child: Calculation()
+        )
       ),
     );
   }
 }
+
 
 class Calculation extends StatefulWidget {
   @override
@@ -49,7 +52,7 @@ class ResultDisplay extends StatelessWidget {
       color: Colors.black,
       child: Container(        
         alignment: Alignment.centerRight,
-        padding: EdgeInsets.only(right: 24),
+        padding: EdgeInsets.only(right: 24, bottom: 24),
         child: Text(
           text,
           style: TextStyle(
