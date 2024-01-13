@@ -35,7 +35,13 @@ class _CalculationState extends State<Calculation> {
         ResultDisplay(text: '0'),
         Row(
           children: [
-            // Here we want to place the buttons of the first Row
+            CalculatorButton(
+              label: '7',
+              onTap: () => {},
+              size: 90,
+              backgroundColor: Colors.white,
+              labelColor: Colors.black,
+            )// Here we want to place the buttons of the first Row
           ],
         )
       ]
@@ -93,14 +99,14 @@ class CalculatorButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(6),
-      child: Container(
+      child: Ink(
         width: size,
         height: size,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.grey, 
-              offset: Offset(1, 1), 
+              color: Colors.grey,
+              offset: Offset(1, 1),
               blurRadius: 2
             ),
           ],
@@ -109,29 +115,19 @@ class CalculatorButton extends StatelessWidget {
           ),
           color: backgroundColor
         ),
-        child:SizedBox(
-          child : ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: Stack(
-              children: <Widget>[
-                Positioned.fill(
-                  child:Container(color:Color(0xFF0D47A1))
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.all(16.0),
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {},
-                  child: const Text('Gradient'),
-                ),
-              ]
+        child: InkWell(
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(size / 2)),
+          ),
+          onTap: onTap,
+          child: Center(
+            child: Text(
+              label,
+              style: TextStyle(fontSize: 24, color: labelColor),
             )
           ),
-        )
+        ),
       )
     );
   }
-
 }
