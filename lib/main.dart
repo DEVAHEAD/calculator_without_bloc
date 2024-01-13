@@ -8,7 +8,8 @@ void main() {
 class CalculatorApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp(    
+      debugShowCheckedModeBanner: false,
       title: 'Flutter basic calculator',
       home: Scaffold(
         body: Calculation()
@@ -38,7 +39,7 @@ class ResultDisplay extends StatelessWidget {
   });
 
   //final int result;//HY[240113] quoted final int result
-  late String text; //HY[240113] added late String text
+  final String text; //HY[240113] added final String text
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +47,18 @@ class ResultDisplay extends StatelessWidget {
       width: double.infinity,
       height: 80,
       color: Colors.black,
-      child: Text(
-        text,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 34
-        ),
+      child: Container(        
+        alignment: Alignment.centerRight,
+        padding: EdgeInsets.only(right: 24),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 34
+          ),
+        )
       )
+
     );
   }
 }
