@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:calculator_without_bloc/main.dart';
 
 void main() {
   runApp(CalculatorApp());
