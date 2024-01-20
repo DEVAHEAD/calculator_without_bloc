@@ -122,19 +122,19 @@ class _CalculationState extends State<Calculation> {
     setState(() {
       switch (operator) {
         case '+':
-          result = firstOperand + secondOperand;
+          result = firstOperand! + secondOperand!; // HY 0120 added ! to each operand 
           break;
         case '-':
-          result = firstOperand - secondOperand;
+          result = firstOperand! - secondOperand!; // HY 0120 added ! to each operand
           break;
         case '*':
-          result = firstOperand * secondOperand;
+          result = firstOperand! * secondOperand!; // HY 0120 added ! to each operand
           break;
         case '/':
           if (secondOperand == 0) {
             return;
           }
-          result = firstOperand ~/ secondOperand;
+          result = firstOperand! ~/ secondOperand!; // HY 0120 added ! to each operand
           break;
       }
 
